@@ -9,17 +9,14 @@ import org.jboss.netty.channel.*;
  * User: nagesh
  * Date: Nov 20, 2010
  * Time: 11:12:01 PM
- * To change this template use File | Settings | File Templates.
  */
 public class SampleServerHandler extends SimpleChannelHandler {
 
     public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) {
-        System.out.println("messageReceived");
-//        Channel ch  = e.getChannel();
-//        ch.write(e.getMessage());
+        System.out.println("channelConnected");
         Channel ch = e.getChannel();
-        ChannelBuffer buffer = ChannelBuffers.buffer(8);
-        buffer.writeLong((System.currentTimeMillis()/1000));
+        ChannelBuffer buffer = ChannelBuffers.buffer(4);
+        buffer.writeInt((int)(System.currentTimeMillis()/1000));
 
         ChannelFuture future = ch.write(buffer);
         future.addListener(new ChannelFutureListener() {
