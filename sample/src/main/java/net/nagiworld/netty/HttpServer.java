@@ -29,34 +29,21 @@ public class HttpServer {
                 //Executors.newCachedThreadPool()
                 Executors.newSingleThreadExecutor(),
                 Executors.newFixedThreadPool(5),
-                5
+                5 /* want only 5 rps */
         );
 
         ServerBootstrap bootstrap = new ServerBootstrap(factory);
         bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
 
             public ChannelPipeline getPipeline() throws Exception {
-                ChannelPipeline pipeline = Channels.pipeline(
+              return Channels.pipeline(
                         new HttpRequestDecoder(),
-                        new HttpChunkAggregator(10485760),
-                        new HttpResponseEncoder(),
-                        new ChunkedWriteHandler(),
-                        //new HttpServerHandler()
-                        new HttpCustomHandler()
-                );
-//                // Uncomment the following line if you want HTTPS
-//                // SSLEngine engine =
-//                // SecureChatSslContextFactory.getServerContext().createSSLEngine();
-//                // engine.setUseClientMode(false);
-//                // pipeline.addLast("ssl", new SslHandler(engine));
-//                pipeline.addLast("executor", new ExecutionHandler(workerExecutor));
-//                pipeline.addLast("decoder", new HttpRequestDecoder());
-//                // Uncomment the following line if you don't want to handle HttpChunks.
-//                //pipeline.addLast("aggregator", new HttpChunkAggregator(10485760));
-//                pipeline.addLast("encoder", new HttpResponseEncoder());
-//                pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
-//                pipeline.addLast("handler", new HttpRequestHandler(sslContext, pipeline, selector, httpServer, workerExecutor));
-                return pipeline;
+                      new HttpChunkAggregator(10485760),
+                      new HttpResponseEncoder(),
+                      new ChunkedWriteHandler(),
+                      //new HttpServerHandler()
+                      new HttpCustomHandler()
+              );
             }
         });
 
