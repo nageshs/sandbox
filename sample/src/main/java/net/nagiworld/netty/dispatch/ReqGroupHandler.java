@@ -7,5 +7,6 @@ package net.nagiworld.netty.dispatch;
  * Time: 12:28:08 AM
  * To change this template use File | Settings | File Templates.
  */
-public class ReqGroupHandler {
+public interface ReqGroupHandler {
+  void mergeEvent(ReqGroup group);
 }

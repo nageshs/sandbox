@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
  */
 public class TimeClient {
 
-    public static void main(String[] args) {
+    public static void doit() {
         String host = "localhost";
         int port = 8080;
         ChannelFactory factory = new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),
@@ -39,4 +39,8 @@ public class TimeClient {
         bootstrap.setOption("keepAlive", true);
         bootstrap.connect(new InetSocketAddress(host, port));
     }
+
+  public static void main(String[] args) {
+    doit();
+  }
 }

@@ -25,8 +25,11 @@ public class HttpServer {
 
     public static void main(String[] args) {
         ChannelFactory factory = new NioServerSocketChannelFactory(
-                Executors.newCachedThreadPool(),
-                Executors.newCachedThreadPool()
+                //Executors.newCachedThreadPool(),
+                //Executors.newCachedThreadPool()
+                Executors.newSingleThreadExecutor(),
+                Executors.newFixedThreadPool(5),
+                5
         );
 
         ServerBootstrap bootstrap = new ServerBootstrap(factory);
@@ -38,7 +41,8 @@ public class HttpServer {
                         new HttpChunkAggregator(10485760),
                         new HttpResponseEncoder(),
                         new ChunkedWriteHandler(),
-                        new HttpServerHandler()
+                        //new HttpServerHandler()
+                        new HttpCustomHandler()
                 );
 //                // Uncomment the following line if you want HTTPS
 //                // SSLEngine engine =

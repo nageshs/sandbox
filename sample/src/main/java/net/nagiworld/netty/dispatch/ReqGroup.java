@@ -36,4 +36,7 @@ public class ReqGroup<E> {
     }
   }
 
+  public Map<String,E> getMap() {
+    return map;
+  }
 }
