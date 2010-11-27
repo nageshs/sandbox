@@ -1,0 +1,15 @@
+- Experiment 1
+  Build a mashup server which has some kind of api 
+  a) to fetch multiple services 
+  b) and then send them to the client
+  c) Both (a) and (b) must be asynchronous utilizing nio.
+
+- The challenge in writing non-blocking code seems to be the abstractions. Currently there is no way to find out if the entire ChannelGroup has been closed. 
+
+- Open Issues in current impl (11/26/10):
+  - Need ability to timeout after X ms. (Need to checkout the timout/timer implementations in netty)
+  - Need to use Executors/Handlers to prevent the code from running in IO threads.
+
+-> R1 --> 1) List services
+      	  2) Setup operation on done
+	  3) call services.
