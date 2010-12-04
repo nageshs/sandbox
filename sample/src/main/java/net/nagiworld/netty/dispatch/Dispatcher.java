@@ -1,6 +1,6 @@
 package net.nagiworld.netty.dispatch;
 
-import net.nagiworld.netty.HttpClientSample;
+import net.nagiworld.netty.HttpClient;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.ChannelFutureListener;
@@ -64,7 +64,7 @@ public class Dispatcher {
     });
 
     final String s1 = "http://www.yahoo.com/";
-    HttpClientSample s = new HttpClientSample(new URI(s1));
+    HttpClient s = new HttpClient(new URI(s1));
 
     
     s.connect(new SimpleChannelUpstreamHandler() {
@@ -89,7 +89,7 @@ public class Dispatcher {
 
 
     final String s2 = "http://www.cnn.com/";
-    HttpClientSample sample = new HttpClientSample(new URI(s2));
+    HttpClient sample = new HttpClient(new URI(s2));
 
 
     sample.connect(new SimpleChannelUpstreamHandler() {
