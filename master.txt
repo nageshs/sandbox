@@ -1,1 +1,2 @@
 this is foo in master
+now this is in refactor
