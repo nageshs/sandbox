@@ -25,7 +25,7 @@ Include the clover-android-sdk as a library in your application. For more inform
 ### 4. Update AndroidManifest.xml
 Ensure that your add has the __"android.permission.INTERNET"__ permission to ensure that the Clover SDK can connect to the Clover servers. 
 
-         &lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+         <uses-permission android:name="android.permission.INTERNET"/>
 
 
 ## Using the API
