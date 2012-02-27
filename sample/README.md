@@ -37,7 +37,7 @@ To set up the API in your purchase activity, you call the following:
 
    cloverSDK = Clover.init(this, "MERCHANT_API_ID");
 
-Here you can replace the "MERCHANT_API_ID" with your merchant api id. 
+Please replace the "MERCHANT_API_ID" in the above line with your merchant api id. 
 
 ### Optional: Set the first purchase information
 
@@ -77,7 +77,7 @@ The Clover SDK starts an activity for result from your application's activity an
         cloverSDK.authorizeOrder(TestBuyingActivity.this, order, new CloverOrderListener() {
           @Override
           public void onOrderAuthorized(CloverOrder order) {
-	    // process successfull order 
+            // process successfull order 
           }
 
           @Override
@@ -87,7 +87,7 @@ The Clover SDK starts an activity for result from your application's activity an
 
           @Override
           public void onFailure(Throwable th) {
-	    // Triggered when an Exception/Error happens while processing an order
+            // Triggered when an Exception/Error happens while processing an order
           }
         });
       }
