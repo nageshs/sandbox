@@ -6,7 +6,7 @@
 
 ##Getting Started 
 
-The Clover Android SDK is packaged as an Android Library Module. To get started with the Clover Android SDK, you can go through the following 4 steps:
+The Clover Android SDK is packaged as an Android Library Module. The following steps help you get started with the SDK.
 
 ### 1: Download the Clover SDK 
 
@@ -14,7 +14,7 @@ Go to [https://github.com/clover/clover-android-sdk/downloads] (https://github.c
 
 ### 2: Extract the downloaded SDK 
 
-For example ~/android-clover-sdk. Alternatively, you can fork the project 
+For example ~/android-clover-sdk.
 
 ### 3: Update your project.properties 
 Include the clover-android-sdk as a library in your application. For more information about Android Library, checkout the documentation at [http://developer.android.com/guide/developing/projects/projects-eclipse.html#ReferencingLibraryProject](http://developer.android.com/guide/developing/projects/projects-eclipse.html#ReferencingLibraryProject)
@@ -44,7 +44,7 @@ Please replace the "MERCHANT_API_ID" in the above line with your merchant api id
     cloverSDK.createFirstPurchaseInfo()
 	.setFullName("app_user's_name").setEmail("user-namge@example.com").setPhoneNumber("...");
 
-The first purchase information is only used when your application user does not have the Clover Application installed. A web overlay is created for such cases and the first purchase information is used to pre populate the fields thus reducing the amount of typing required by your users. 
+The first purchase information is only used when Clover is not installed on the user's device. A web overlay is created for such cases and the first purchase information is only used to pre populate the fields, thus reducing the amount of typing required by your users. 
 
 ### Creating a Clover Order Request 
 
@@ -68,7 +68,11 @@ The Clover SDK starts an activity for result from your application's activity an
 
 ### Creating the Buy Button implementation 
 
-    final Button buyButton = (Button) findViewById(R.id.<button>);
+Add an onClickListener that finally triggers the Authorize Order. 
+
+The __authorizeOrder__ takes in the current context, the order request and an instance of the __CloverOrderListener__. The CloverOrderListener lets you listen in on the various order events such as onOrderAuthorized, onCancel and onFailure.
+
+    final Button buyButton = (Button) findViewById(R.id.<button_id>);
     buyButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
