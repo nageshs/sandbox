@@ -55,7 +55,7 @@ The first purchase information is only used when Clover is not installed on the 
         .setClientOrderId("my_client_id") // Specify an ID that identifies this item in your application. (such as an item id)
         .build();
 
-The next step setsup the order request for the item. In this case the amount is set to 0.50, title is set to "Movie Ticket" and the application requests the full_name and the email_address permissions. The setClientOrderId("..") takes in an opaque string that can identify this item in your application. This opaque string is round tripped in the order response. 
+The next step setsup the order request for the item. In this case the amount is set to 0.50, title is set to "Movie Ticket" and the application requests the full_name and the email_address permissions. The setClientOrderId("..") takes in an opaque string that can identify the current item in your application. This opaque string is round tripped in the order response. 
 
 ### Implement `onActivityResult(..)`
 
